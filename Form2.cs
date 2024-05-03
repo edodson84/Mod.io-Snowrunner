@@ -120,7 +120,7 @@ namespace ModioSnowrunner
                 button1.Text = "Download";
                 button1.UseVisualStyleBackColor = true;
                 // Get the URL of the file from the JSON data
-                string fileUrl = GlobalVariables.Mod["data"][i]["modfile"]["download"]["binary_url"].Value<string>();
+                string fileUrl = GlobalVariables.Mod["data"][i]["modfile"]["download"]["binary_url"].ToString();
                 var modidstring = GlobalVariables.Mod["data"][i]["id"].ToString();
                 var modidint = GlobalVariables.Mod["data"][i]["id"];
                 var modiojson = GlobalVariables.Mod["data"][i].ToString();

@@ -12,7 +12,7 @@ namespace ModioSnowrunner
         public static string apikey;
         public static string Email;
         public static string profile_directory;
-        public static JObject Mod;
+        public static dynamic Mod;
         public static JObject user_profile = JObject.Parse(@"{
         ""UserProfile"": {
             ""modDependencies"": {

@@ -17,6 +17,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="logo.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logo.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Settings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -25,7 +32,9 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
-    <PackageReference Include="Svg" Version="3.4.7" />
+    <PackageReference Include="SkiaSharp" Version="2.88.8" />
+    <PackageReference Include="SkiaSharp.Extended" Version="2.0.0" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
   </ItemGroup>
 
   <ItemGroup>
