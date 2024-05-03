@@ -35,10 +35,7 @@ namespace ModioSnowrunner
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)datumBindingSource).BeginInit();
             SuspendLayout();
-            // 
-            // datumBindingSource
-            // 
-            datumBindingSource.DataSource = typeof(Datum);
+          
             // 
             // panel1
             // 

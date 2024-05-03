@@ -36,39 +36,39 @@ namespace Mod.io_Snowrunner
 
         }
         public static void getauthcode(string api, string email)
-        {   
-                // Create RestClient and RestRequest
-                RestClient client = new RestClient(GlobalVariables.ModioApi);
-                RestRequest req = new RestRequest("oauth/emailrequest", Method.Post);
-                req.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-                req.AddParameter("api_key", api);
-                req.AddParameter("email", email);
+        {
+            // Create RestClient and RestRequest
+            RestClient client = new RestClient(GlobalVariables.ModioApi);
+            RestRequest req = new RestRequest("oauth/emailrequest", Method.Post);
+            req.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            req.AddParameter("api_key", api);
+            req.AddParameter("email", email);
 
-                // Execute the request
-                RestResponse resp = client.Execute(req);
+            // Execute the request
+            RestResponse resp = client.Execute(req);
 
-                // Check if the request was successful
-                if (resp.StatusCode == System.Net.HttpStatusCode.OK)
-                {
+            // Check if the request was successful
+            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+            {
 
-                    // After receiving the response
-                    string responseContent = resp.Content;
+                // After receiving the response
+                string responseContent = resp.Content;
 
-                    // Parse the JSON response to extract the title and message
-                    dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
-                    string title = jsonResponse.code;
-                    string message = jsonResponse.message;
-                    GlobalVariables.apikey = api;
-                    GlobalVariables.Email = email;
+                // Parse the JSON response to extract the title and message
+                dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
+                string title = jsonResponse.code;
+                string message = jsonResponse.message;
+                GlobalVariables.apikey = api;
+                GlobalVariables.Email = email;
 
                 // Display the message in a MessageBox
-                    MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    // Handle the case where the request was not successful
-                    MessageBox.Show($"Error: {resp.StatusCode}", "Request Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Handle the case where the request was not successful
+                MessageBox.Show($"Error: {resp.StatusCode}", "Request Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public static void getauthToken(string authcode)

@@ -16,16 +16,36 @@ namespace Mod.io_Snowrunner
         {
             // Read the JSON content from the file
             string filePath = "Settings.json";
-            string jsonContent = File.ReadAllText(filePath);
+            if (File.Exists(filePath))
+            {
+                string jsonContent = File.ReadAllText(filePath);
 
-            // Parse the JSON response to extract the settings
-            dynamic settings = JsonConvert.DeserializeObject(jsonContent);
-            // Extract settings values
-            GlobalVariables.AuthToken = settings.access_token;
-            GlobalVariables.tokenexpires = settings.date_expires;
-            GlobalVariables.apikey = settings.api_key;
-            GlobalVariables.Email = settings.email;
-            GlobalVariables.profile_directory = settings.profile_directory;
+                // Parse the JSON response to extract the settings
+                dynamic settings = JsonConvert.DeserializeObject(jsonContent);
+                // Extract settings values
+                GlobalVariables.AuthToken = settings.access_token;
+                GlobalVariables.tokenexpires = settings.date_expires;
+                GlobalVariables.apikey = settings.api_key;
+                GlobalVariables.Email = settings.email;
+                GlobalVariables.profile_directory = settings.profile_directory;
+            }
+            else
+            {
+                // Create a dictionary to hold the settings dynamically
+                Dictionary<string, string> dynamicSettings = new Dictionary<string, string>
+                {
+                { "profile_directory", GlobalVariables.profile_directory },
+                { "api_key", GlobalVariables.apikey },
+                { "date_expires", GlobalVariables.tokenexpires.ToString() },
+                { "access_token", GlobalVariables.AuthToken },
+                { "email", GlobalVariables.Email }
+                };
+                // Serialize the settings dictionary to JSON format
+                string jsonContent = JsonConvert.SerializeObject(dynamicSettings);
+
+                // Write the JSON content to the file
+                File.WriteAllText(filePath, jsonContent);
+            }
         }
 
         public static void writesettings()

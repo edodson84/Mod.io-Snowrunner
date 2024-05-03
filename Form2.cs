@@ -129,7 +129,7 @@ namespace ModioSnowrunner
 
                     string myGamesFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\My Games\SnowRunner\base\Mods\.modio\mods\" + modidstring;
                     string authjsonFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\My Games\SnowRunner\base\Mods\.modio\";
-                    
+
                     string authFilePath = Path.Combine(authjsonFolderPath, "authentication.json");
                     File.WriteAllText(authFilePath, GlobalVariables.authjson.ToString());
 
